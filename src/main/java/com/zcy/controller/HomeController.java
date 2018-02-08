@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/home")
-public class WebController
+public class HomeController
 {
     // host:port/home/hello
     @RequestMapping("/hello")
     public String helloMVC()
     {
-        return "hello"; // hello.jsp
+        return "home/hello"; // hello.jsp
     }
 }

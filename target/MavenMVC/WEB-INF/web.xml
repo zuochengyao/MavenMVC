@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 	
-	<display-name>Archetype Created Web Application</display-name>
+	<display-name>Hello MavenMVC</display-name>
 	
 	<!-- welcome pages -->
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
 	</welcome-file-list>
 	
 	<!-- servlet config -->
@@ -28,6 +28,7 @@
 		<servlet-name>SpringMVC-Dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 		<url-pattern>*.do</url-pattern>
+		<url-pattern>*.action</url-pattern>
 	</servlet-mapping>
 	
 	<!-- filter config -->
