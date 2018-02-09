@@ -1,5 +1,6 @@
 package com.zcy.controller;
 
+import com.zcy.model.User;
 import com.zcy.service.IUserService;
 
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,18 @@ public class UserController
     public String manager()
     {
         return "user/manager";
+    }
+
+    @RequestMapping("/insert")
+    @ResponseBody
+    public String insert()
+    {
+        User user = new User();
+        user.setGender((short) 0);
+        user.setUsername("Zuocy");
+        user.setPassword("zuo901213");
+        userService.insertUser(user);
+        return "success";
     }
 
     @RequestMapping("/delete")

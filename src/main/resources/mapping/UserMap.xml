@@ -12,7 +12,7 @@
 	</resultMap>
 	
 	<insert id="insert" parameterType="com.zcy.model.User">
-		insert into t_user (u_username, u_password, u_gender) values (#{userName}, #{password}, #{age})
+		insert into t_user (u_username, u_password, u_gender) values (#{username}, #{password}, #{gender})
 	</insert>
 	
 	<!-- #{id, jdbcType=INTEGER} -->

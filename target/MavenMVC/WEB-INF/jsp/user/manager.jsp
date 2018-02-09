@@ -24,7 +24,8 @@
 </head>
 <body>
 <div>
-    <input type="button" id="delete" value="delete" onclick='deleteUser(1)' />
+    <input type="button" value="delete" onclick='deleteUser(1)' />
+    <input type="button" value="insert" onclick='insertUser()' />
 </div>
 <script src="<%=basePath%>js/libs/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript" >
@@ -32,6 +33,18 @@
         if (confirm('确认删除吗？')) {
             $.post("<%=basePath%>user/delete.action", {"id": id}, function (data) {
                 if (data == "OK") {
+                    alert("success");
+                }
+                else {
+                    alert("fail");
+                }
+            })
+        }
+    }
+    function insertUser() {
+        if (confirm('确认删除吗？')) {
+            $.post("<%=basePath%>user/insert.action", function (data) {
+                if (data == "success") {
                     alert("success");
                 }
                 else {
