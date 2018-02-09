@@ -5,7 +5,7 @@
 	<sql id="T_User_Columns">u_id, u_username, u_password, u_gender</sql>
 	
 	<resultMap id="T_User_ResultMap" type="com.zcy.model.User">
-		<id column="u_id" property="id" jdbcType="INT"/>
+		<id column="u_id" property="id" jdbcType="INTEGER"/>
 		<result column="u_username" property="username" jdbcType="VARCHAR"/>
 		<result column="u_password" property="password" jdbcType="VARCHAR"/>
 		<result column="u_gender" property="gender" jdbcType="TINYINT"/>
