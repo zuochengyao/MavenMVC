@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zcy.dao.IUserDao">
+	
+	<sql id="T_User_Columns">u_id, u_username, u_password, u_gender</sql>
+	
+	<resultMap id="T_User_ResultMap" type="com.zcy.model.User">
+		<id column="u_id" property="id" jdbcType="INT"/>
+		<result column="u_username" property="username" jdbcType="VARCHAR"/>
+		<result column="u_password" property="password" jdbcType="VARCHAR"/>
+		<result column="u_gender" property="gender" jdbcType="TINYINT"/>
+	</resultMap>
+	
+	<insert id="insert" parameterType="com.zcy.model.User">
+		insert into t_user (u_username, u_password, u_gender) values (#{userName}, #{password}, #{age})
+	</insert>
+	
+	<!-- #{id, jdbcType=INTEGER} -->
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from t_user where u_id = #{id}
+	</delete>
+	
+</mapper>
