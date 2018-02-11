@@ -12,16 +12,38 @@
 	</resultMap>
 	
 	<insert id="insert" parameterType="com.zcy.model.User">
-		insert into t_user (u_username, u_password, u_gender) values (#{username}, #{password}, #{gender})
+		INSERT INTO t_user (u_username, u_password, u_gender)
+		VALUES (#{username}, #{password}, #{gender});
 	</insert>
 	
 	<!-- #{id, jdbcType=INTEGER} -->
 	<delete id="delete" parameterType="java.lang.Integer">
-		delete from t_user where u_id = #{id}
+		DELETE FROM t_user
+		WHERE u_id = #{id};
 	</delete>
 	
+	<update id="update" parameterType="com.zcy.model.User">
+		UPDATE t_user
+		SET u_username = #{username}, u_password = #{password}
+		WHERE u_id = #{id}
+	</update>
+	
+	<!--  resultMap="T_User_ResultMap"也可以 -->
 	<select id="get" parameterType="java.lang.Integer" resultMap="T_User_ResultMap">
-		select * from t_user where u_id = #{id}
+		SELECT *
+		FROM t_user
+		WHERE u_id = #{id};
 	</select>
 	
+	<select id="getUserCount" resultType="java.lang.Integer">
+		SELECT count(*)
+		FROM t_user;
+	</select>
+	
+	<select id="getUserList" parameterType="com.zcy.pojo.UserQueryVo" resultMap="T_User_ResultMap">
+		SELECT *
+		FROM t_user
+		LIMIT #{start}, #{pageSize};
+	</select>
+
 </mapper>

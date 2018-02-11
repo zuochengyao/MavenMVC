@@ -6,7 +6,7 @@ interface IBaseDao<T>
 
     int delete(int id);
 
-    // int update(T entity);
+    int update(T entity);
 
     T get(int id);
 }

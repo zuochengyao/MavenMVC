@@ -28,11 +28,37 @@
     <input type="button" value="insert" onclick='insertUser()'/>
     <input type="button" value="getUser" onclick='getUser(2)'/>
     <br/>
-    <form id="edit_customer_form">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>用户名</td>
+                <td>密码</td>
+                <td>性别</td>
+                <td></td>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${users}" var="user">
+                <tr>
+                    <td>${user.id}</td>
+                    <td>${user.username}</td>
+                    <td>${user.password}</td>
+                    <td>${user.gender}</td>
+                    <td><a onclick="getUser(${user.id})" href="#">编辑</a></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+    <br/>
+    <form id="edit_user_form">
         <input type="text" id="edit_user_id" name="id" readonly/>
         <input type="text" id="edit_user_name" name="username"/>
         <input type="text" id="edit_user_password" name="password"/>
         <input type="text" id="edit_user_gender" name="gender" readonly/>
+        <button type="submit" onclick="updateUser()">修改</button>
     </form>
 </div>
 <script src="<%=basePath%>js/libs/jquery.min.js" type="text/javascript"></script>
@@ -61,6 +87,18 @@
                 }
             })
         }
+    }
+    
+    function updateUser() {
+        alert($("edit_user_form").serialize());
+        $.post("<%=basePath%>user/update", $("#edit_user_form").serialize(), function (data) {
+            if (data == "OK") {
+                alert("success");
+            }
+            else {
+                alert("fail");
+            }
+        })
     }
 
     function getUser(id) {
