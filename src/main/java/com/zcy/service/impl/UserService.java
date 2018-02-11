@@ -14,13 +14,21 @@ public class UserService implements IUserService
     @Resource
     private IUserDao userDao;
 
+    @Override
     public int insertUser(User user)
     {
         return userDao.insert(user);
     }
 
+    @Override
     public int deleteUserById(int id)
     {
         return userDao.delete(id);
+    }
+
+    @Override
+    public User getUserById(int id)
+    {
+        return userDao.get(id);
     }
 }

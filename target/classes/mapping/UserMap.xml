@@ -20,4 +20,8 @@
 		delete from t_user where u_id = #{id}
 	</delete>
 	
+	<select id="get" parameterType="java.lang.Integer" resultMap="T_User_ResultMap">
+		select * from t_user where u_id = #{id}
+	</select>
+	
 </mapper>

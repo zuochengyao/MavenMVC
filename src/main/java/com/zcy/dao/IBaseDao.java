@@ -8,5 +8,5 @@ interface IBaseDao<T>
 
     // int update(T entity);
 
-    // T get(int id);
+    T get(int id);
 }

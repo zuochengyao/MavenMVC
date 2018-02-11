@@ -5,6 +5,7 @@ import com.zcy.service.IUserService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -31,7 +32,7 @@ public class UserController
         user.setUsername("Zuocy");
         user.setPassword("zuo901213");
         userService.insertUser(user);
-        return "success";
+        return "OK";
     }
 
     @RequestMapping("/delete")
@@ -40,5 +41,13 @@ public class UserController
     {
         userService.deleteUserById(id);
         return "OK";
+    }
+
+    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
+    @ResponseBody
+    public User getUser(int id) throws Exception
+    {
+        User user = userService.getUserById(id);
+        return user;
     }
 }

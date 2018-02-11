@@ -12,7 +12,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
@@ -24,11 +24,19 @@
 </head>
 <body>
 <div>
-    <input type="button" value="delete" onclick='deleteUser(1)' />
-    <input type="button" value="insert" onclick='insertUser()' />
+    <input type="button" value="delete" onclick='deleteUser(1)'/>
+    <input type="button" value="insert" onclick='insertUser()'/>
+    <input type="button" value="getUser" onclick='getUser(2)'/>
+    <br/>
+    <form id="edit_customer_form">
+        <input type="text" id="edit_user_id" name="id" readonly/>
+        <input type="text" id="edit_user_name" name="username"/>
+        <input type="text" id="edit_user_password" name="password"/>
+        <input type="text" id="edit_user_gender" name="gender" readonly/>
+    </form>
 </div>
 <script src="<%=basePath%>js/libs/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript" >
+<script type="text/javascript">
     function deleteUser(id) {
         if (confirm('确认删除吗？')) {
             $.post("<%=basePath%>user/delete.action", {"id": id}, function (data) {
@@ -41,10 +49,11 @@
             })
         }
     }
+
     function insertUser() {
-        if (confirm('确认添加吗？')) {
-            $.post("<%=basePath%>user/insert.action", function (data) {
-                if (data == "success") {
+        if (confirm('确认删除添加吗？')) {
+            $.post("<%=basePath%>user/insert.do", function (data) {
+                if (data == "OK") {
                     alert("success");
                 }
                 else {
@@ -52,6 +61,20 @@
                 }
             })
         }
+    }
+
+    function getUser(id) {
+        $.ajax({
+            type: 'get',
+            url: "<%=basePath%>user/getUser",
+            data: {'id': id},
+            success: function (data) {
+                $("#edit_user_id").val(data.id);
+                $("#edit_user_name").val(data.username);
+                $("#edit_user_password").val(data.password);
+                $("#edit_user_gender").val(data.gender);
+            }
+        });
     }
 </script>
 </body>
