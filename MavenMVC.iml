@@ -13,8 +13,11 @@
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="fileset" name="Spring Ibatis" removed="false">
+        <fileset id="web application context" name="MVC application context" removed="true">
           <file>file://$MODULE_DIR$/src/main/resources/config/spring-mybatis.xml</file>
+        </fileset>
+        <fileset id="web SpringMVC-Dispatcher servlet context" name="MVC SpringMVC-Dispatcher servlet context" removed="true">
+          <file>file://$MODULE_DIR$/src/main/resources/config/spring-mvc.xml</file>
         </fileset>
       </configuration>
     </facet>
