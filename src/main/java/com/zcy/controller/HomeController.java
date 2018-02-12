@@ -13,6 +13,4 @@ public class HomeController
     {
         return "home/hello"; // hello.jsp
     }
-
-
 }
