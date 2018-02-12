@@ -12,10 +12,7 @@
 	<!--位置一定要正确！！！放的位置一定要正确-->
 	
 	<plugins>
-		<plugin interceptor="com.github.pagehelper.PageInterceptor">
-			<property name="dialect" value="mysql"/>
-			<property name="reasonable" value="true"/>
-		</plugin>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor"/>
 	</plugins>
 
 </configuration>

@@ -43,7 +43,6 @@
 	<select id="getUserList" parameterType="com.zcy.pojo.UserQueryVo" resultMap="T_User_ResultMap">
 		SELECT *
 		FROM t_user
-		LIMIT #{start}, #{pageSize};
 	</select>
 
 </mapper>

@@ -1,5 +1,7 @@
 package com.zcy.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zcy.model.User;
 import com.zcy.pojo.UserQueryVo;
 import com.zcy.service.IUserService;
@@ -31,14 +33,15 @@ public class UserController
             userVo.setUsername(new String(userVo.getUsername().getBytes("iso8859-1"), "utf-8"));
         // 计算分页
         userVo.setStart((userVo.getCurrentageIndex() - 1) * userVo.getPageSize());
+        PageHelper.startPage(0, 2);
         List<User> users = userService.getUserListByVO(userVo);
-        int count = userService.getUserCount();
+        PageInfo page = new PageInfo(users);
+        model.addAttribute("page", page);
         model.addAttribute("users", users);
         model.addAttribute("id", userVo.getId());
         model.addAttribute("userName", userVo.getUsername());
         model.addAttribute("password", userVo.getPassword());
         model.addAttribute("gender", userVo.getGender());
-        model.addAttribute("userCount", count);
         return "user/manager";
     }
 
