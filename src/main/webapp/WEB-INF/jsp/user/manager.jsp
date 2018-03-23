@@ -88,7 +88,7 @@
             })
         }
     }
-    
+
     function updateUser() {
         alert($("edit_user_form").serialize());
         $.post("<%=basePath%>user/update", $("#edit_user_form").serialize(), function (data) {
