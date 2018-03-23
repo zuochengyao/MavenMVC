@@ -33,7 +33,7 @@ public class UserController
             userVo.setUsername(new String(userVo.getUsername().getBytes("iso8859-1"), "utf-8"));
         // 计算分页
         userVo.setStart((userVo.getCurrentageIndex() - 1) * userVo.getPageSize());
-        PageHelper.startPage(0, 2);
+        PageHelper.startPage(0, 3);
         List<User> users = userService.getUserListByVO(userVo);
         PageInfo page = new PageInfo(users);
         model.addAttribute("page", page);
